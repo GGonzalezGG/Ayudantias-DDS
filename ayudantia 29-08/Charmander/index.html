@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Entrada Pokédex - Diseño de Software</title>
+</head>
+<body>
+    <div class="pokedex-entry">
+        <div class="header">
+            <div class="header-title">POKÉDEX ENTRY</div>
+            <div class="header-lights">
+                <div class="status-light light-active"></div>
+                <div class="status-light light-warning"></div>
+                <div class="status-light light-inactive"></div>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="left-panel">
+                <div class="pokemon-image-container">
+                    <img class="pokemon-image" src="charmander-sprite.png" alt="🔍">
+                </div>
+                
+                <div class="pokemon-basic-info">
+                    <div class="pokemon-name">Charmander</div>
+                    <div class="pokemon-nickname">"charmi"</div>
+                    <div class="pokemon-number">#004</div>
+                    <div class="pokemon-level">Nivel: 7</div>
+                </div>
+            </div>
+            
+            <div class="right-panel">
+                <div class="info-section">
+                    <div class="info-title">Tipo</div>
+                    <div class="type-container">
+                        <span class="type-badge type-fire">Fuego</span>
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <div class="info-title">Habilidad</div>
+                    <div class="ability-info">
+                        <div class="ability-name">Mar llama</div>
+                        <div class="ability-description">
+                            Potencia los ataques de tipo Fuego en un apuro.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="entry-notes">
+                    <div class="info-title" style="color: #2196f3;">Notas de Entrada</div>
+                    
+                    <div class="nature-info">
+                        <div class="nature-label">Naturaleza:</div>
+                        <div class="nature-value">Modesta</div>
+                        <div class="nature-effects">+Ataque Esp., -Ataque</div>
+                    </div>
+                    
+                    <div class="pokedex-description">
+                        La llama que tiene en la punta de la cola arde según sus sentimientos. Llamea levemente cuando está alegre y arde vigorosamente cuando está enfadado.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="moves-section">
+            <div class="pokemon-name" style="color: white">Movimientos</div>
+            <div class="moves-container">
+                
+                <div class="move-item">
+                    <div class="move-name">Ascuas</div>
+                    <div class="move-details">
+                        <span class="move-type type-badge type-fire">Fuego</span>
+                        <span class="move-power">Poder: 40</span>
+                        <span class="move-accuracy">Precisión: 100%</span>
+                    </div>
+                </div>
+                <div class="move-item">
+                    <div class="move-name">Gruñido</div>
+                    <div class="move-details">
+                        <span class="move-type type-badge type-normal">Normal</span>
+                        <span class="move-power">Poder: --</span>
+                        <span class="move-accuracy">Precisión: 100%</span>
+                    </div>
+                </div>
+                <div class="move-item">
+                    <div class="move-name">Arañazo</div>
+                    <div class="move-details">
+                        <span class="move-type type-badge type-normal">Normal</span>
+                        <span class="move-power">Poder: 40</span>
+                        <span class="move-accuracy">Precisión: 100%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
