@@ -1,0 +1,25 @@
+.container {
+	display: flex;
+	justify-content: center;
+    background-color: #0000ff;
+    gap: 2rem;
+    min-height: 80vh;
+}
+.seccion  {
+	background: #e0e0e0;
+	padding: 2rem;
+	border-radius: 8px;
+	margin: 10px;
+	width: auto;
+}
+@media (max-width: 600px) {
+	.container {
+		font-size: 10px;
+		flex-direction: column;
+		max-width: 100%;
+		
+	}
+	h2 {
+		font-size: 14px;
+	}
+}
