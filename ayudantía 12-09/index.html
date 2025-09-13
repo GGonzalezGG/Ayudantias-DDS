@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de Sitio Web</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+</head>
+<body class="bg-amber-100">
+    <header class="bg-orange-800 text-slate-200 font-sans text-center px-3 text-gray-50 py-4">
+        <h1 class="text-3xl font-bold font-sans py-2">Bienvenidos a Nuestro Sitio</h1>
+        <p class="font-serif">Un sitio web de ejemplo para replicar hola</p>
+    </header>
+
+     <div>
+        <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script src="app.js" type="text/jsx"></script>
+        <script type="text/babel" src="app.js"></script>
+    </div>
+
+    <div id="sticky-nav"></div>
+
+    <main class="text-orange-950">
+
+        <section id="seccion1" class="container px-8 py-2 justify-center">
+            <h2 class="text-2xl font-serif font-extrabold pb-2">Sobre Nosotros</h2>
+            <p class="pl-3">Somos una empresa comprometida con ofrecer servicios de alta calidad en el área de tecnología. Nuestro equipo está formado por expertos en diversas disciplinas que trabajan en conjunto para brindar las mejores soluciones a nuestros clientes.</p>
+        </section>
+
+        <section class="px-8 py-2" id="seccion2">
+            <div id="image-carousel"></div>
+
+        </section>
+
+
+
+        <section class="px-8 py-2" id="seccion3">
+            <h2 class="text-2xl font-serif font-extrabold pb-2">Nuestros Servicios</h2>
+            <div class="px-4">
+                <div class="py-2">
+                    <h3 class="text-lg font-bold">Desarrollo Web</h3>
+                    <p class="pl-2">Ofrecemos soluciones de desarrollo web a medida para satisfacer las necesidades específicas de cada cliente.</p>
+                </div>
+                <div class="py-2">
+                    <h3 class="text-lg font-bold">Consultoría en TI</h3>
+                    <p class="pl-2">Brindamos consultoría estratégica en tecnología de la información para ayudar a las empresas a alcanzar sus objetivos.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="px-8 py-2" id="seccion4">
+            <h2 class="text-2xl font-serif font-extrabold">Testimonios</h2>
+            <div class="px-8">
+                <div class="py-4 hover:scale-105 transition duration-300">
+                    <blockquote class="mt-2 p-3 bg-amber-200 rounded-lg shadow-xl">
+                        <p class="text-orange-900 font-bold">“La mejor experiencia que hemos tenido con una empresa de tecnología. Altamente recomendados.”</p>
+                        <footer class="text-right text-orange-900 font-semibold">Juan Pérez, CEO de Empresa X</footer>
+                    </blockquote>
+                </div>
+                <div class="py-4 hover:scale-105 transition duration-300">
+                    <blockquote class="mt-2 p-3 bg-amber-200 rounded-lg shadow-xl">
+                        <p class="text-orange-900 font-bold">“Su equipo es muy profesional y entregan resultados de alta calidad en poco tiempo.”</p>
+                        <footer class="text-right text-orange-900 font-semibold">María Gómez, Directora de Proyectos en Empresa Y</footer>
+                    </blockquote>
+                </div>
+                <div class="py-4 hover:scale-105 transition duration-300">
+                    <blockquote class="mt-2 p-3 bg-amber-200 rounded-lg shadow-xl">
+                        <p class="text-orange-900 font-bold">“Su equipo es muy profesional y entregan resultados de alta calidad en poco tiempo.”</p>
+                        <footer class="text-right text-orange-900 font-semibold">María Gómez, Directora de Proyectos en Empresa Y</footer>
+                    </blockquote>
+                </div>
+                <div class="py-4 hover:scale-105 transition duration-300">
+                    <blockquote class="mt-2 p-3 bg-amber-200 rounded-lg shadow-xl">
+                        <p class="text-orange-900 font-bold">“Su equipo es muy profesional y entregan resultados de alta calidad en poco tiempo.”</p>
+                        <footer class="text-right text-orange-900 font-semibold">María Gómez, Directora de Proyectos en Empresa Y</footer>
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+
+        <section class="px-8 py-2" id="seccion5">
+            <div id="contact-form"></div>
+        </section>
+
+    </main>
+
+    <footer class="py-2 text-center text-red-950 font-bold font-serif bg-amber-200">
+        <p>&copy; 2024 Ejemplo de Sitio Web. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
