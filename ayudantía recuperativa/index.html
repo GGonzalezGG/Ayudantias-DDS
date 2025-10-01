@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Pokedex Simple - CRUD</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 1rem; }
+    .card { border: 1px solid #ccc; padding: 1rem; margin-bottom: 1rem; border-radius: 8px; }
+    pre { background: #f7f7f7; padding: 1rem; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <h1>Pokedex Simple</h1>
+
+  <!-- === LISTAR === -->
+  <div class="card">
+    <h2>Todos los Pokémon</h2>
+    <!-- Botón que llama al endpoint GET /api/pokemons -->
+    <button onclick="listar()">Actualizar lista</button>
+    <div id="lista"></div>
+  </div>
+
+  <!-- === BUSCAR === -->
+  <div class="card">
+    <h2>Buscar Pokémon</h2>
+    <input id="searchName" placeholder="Nombre" />
+    <!-- Botón que llama al endpoint GET /api/pokemon/:name -->
+    <button onclick="buscar()">Buscar</button>
+    <div id="resultado"></div>
+  </div>
+
+  <!-- === AGREGAR === -->
+  <div class="card">
+    <h2>Agregar Pokémon</h2>
+    <!-- Formulario que hace POST /api/pokemon -->
+    <form onsubmit="agregar(event)">
+      <input id="name" placeholder="Nombre" required />
+      <input id="type" placeholder="Tipo" />
+      <input id="nature" placeholder="Naturaleza" />
+      <input id="moves" placeholder="Movimientos (coma)" />
+      <button type="submit">Agregar</button>
+    </form>
+    <div id="insertMsg"></div>
+  </div>
+
+  <!-- === ACTUALIZAR === -->
+  <div class="card">
+    <h2>Actualizar Pokémon</h2>
+    <!-- Formulario que hace PUT /api/pokemon/:name -->
+    <form onsubmit="actualizar(event)">
+      <input id="updateName" placeholder="Nombre a actualizar" required />
+      <input id="updateType" placeholder="Nuevo tipo" />
+      <input id="updateNature" placeholder="Nueva naturaleza" />
+      <input id="updateMoves" placeholder="Nuevos movimientos (coma)" />
+      <button type="submit">Actualizar</button>
+    </form>
+    <div id="updateMsg"></div>
+  </div>
+
+  <!-- === ELIMINAR === -->
+  <div class="card">
+    <h2>Eliminar Pokémon</h2>
+    <!-- Formulario que hace DELETE /api/pokemon/:name -->
+    <form onsubmit="eliminar(event)">
+      <input id="deleteName" placeholder="Nombre a eliminar" required />
+      <button type="submit">Eliminar</button>
+    </form>
+    <div id="deleteMsg"></div>
+  </div>
+
+  <script>
+    // === GET /api/pokemons ===
+    // Trae la lista completa de pokémon desde el backend
+    async function listar() {
+      const res = await fetch("/api/pokemons");  // -> API devuelve un array de pokémon
+      const data = await res.json();
+      document.getElementById("lista").innerHTML =
+        "<pre>" + JSON.stringify(data, null, 2) + "</pre>";
+    }
+
+    // === GET /api/pokemon/:name ===
+    // Busca un pokémon por su nombre
+    async function buscar() {
+      const name = document.getElementById("searchName").value.trim();
+      if (!name) return;
+      const res = await fetch("/api/pokemon/" + encodeURIComponent(name)); // -> API devuelve un pokémon
+      const data = await res.json();
+      document.getElementById("resultado").innerHTML =
+        "<pre>" + JSON.stringify(data, null, 2) + "</pre>";
+    }
+
+    // === POST /api/pokemon ===
+    // Agrega un nuevo pokémon con los datos del formulario
+    async function agregar(e) {
+      e.preventDefault();
+      const body = {
+        name: document.getElementById("name").value.trim(),
+        type: document.getElementById("type").value.trim(),
+        nature: document.getElementById("nature").value.trim(),
+        moves: document.getElementById("moves").value.trim().split(",").map(s => s.trim()).filter(Boolean)
+      };
+      const res = await fetch("/api/pokemon", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(body) // -> API espera JSON con name, type, nature, moves
+      });
+      const data = await res.json();
+      document.getElementById("insertMsg").innerText = data.message || data.error;
+      listar(); // refrescar lista después de agregar
+    }
+
+    // === PUT /api/pokemon/:name ===
+    // Actualiza los datos de un pokémon existente
+    async function actualizar(e) {
+      e.preventDefault();
+      const name = document.getElementById("updateName").value.trim();
+      const body = {};
+      if (document.getElementById("updateType").value) body.type = document.getElementById("updateType").value;
+      if (document.getElementById("updateNature").value) body.nature = document.getElementById("updateNature").value;
+      const moves = document.getElementById("updateMoves").value.trim();
+      if (moves) body.moves = moves.split(",").map(s => s.trim()).filter(Boolean);
+
+      const res = await fetch("/api/pokemon/" + encodeURIComponent(name), {
+        method: "PUT",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(body) // -> API espera los campos a actualizar
+      });
+      const data = await res.json();
+      document.getElementById("updateMsg").innerText = data.message || data.error;
+      listar();
+    }
+
+    // === DELETE /api/pokemon/:name ===
+    // Elimina un pokémon por su nombre
+    async function eliminar(e) {
+      e.preventDefault();
+      const name = document.getElementById("deleteName").value.trim();
+      if (!confirm("¿Eliminar " + name + "?")) return;
+      const res = await fetch("/api/pokemon/" + encodeURIComponent(name), { method: "DELETE" });
+      const data = await res.json();
+      document.getElementById("deleteMsg").innerText = data.message || data.error;
+      listar();
+    }
+
+    // Al cargar la página, obtenemos la lista inicial de pokémon
+    listar();
+  </script>
+</body>
+</html>

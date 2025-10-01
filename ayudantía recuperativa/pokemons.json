@@ -1,0 +1,19 @@
+[
+  {
+    "name": "charmander",
+    "type": "agua",
+    "nature": "docil",
+    "moves": [
+      "arañazo"
+    ]
+  },
+  {
+    "name": "pikachu",
+    "type": "fuego",
+    "nature": "mala",
+    "moves": [
+      "rocca",
+      "guille"
+    ]
+  }
+]
